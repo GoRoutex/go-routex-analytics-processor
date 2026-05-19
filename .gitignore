@@ -1,0 +1,47 @@
+# ===== Java / Maven =====
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.log
+.m2/
+
+# ===== IDE =====
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+.settings/
+.project
+.classpath
+.factorypath
+.springBeans
+.sts4-cache/
+
+# ===== OS =====
+.DS_Store
+Thumbs.db
+
+# ===== Build =====
+build/
+out/
+
+# ===== Node (nếu có frontend) =====
+node_modules/
+
+# ===== Env / Secret =====
+.env
+*.env
+!application-*.yml
+!application.yml
+!application-dev.yml
+!application-prod.yml
+
+# ===== Kubernetes temp =====
+*.tgz
+charts/*.tgz
+
+# ===== GitLab =====
+.gitlab-ci.local.yml

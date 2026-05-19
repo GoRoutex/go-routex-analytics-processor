@@ -1,0 +1,107 @@
+spring:
+  application:
+    name: go-routex-analytics-processor
+
+  threads:
+    virtual:
+      enabled: true
+
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:}
+  cache:
+    type: redis
+    redis:
+      time-to-live: 600000 # 10 minutes default TTL
+
+  kafka:
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      acks: all
+      retries: 3
+      properties:
+        enable.idempotence: true
+        max.in.flight.requests.per.connection: 1
+        compression.type: gzip
+        linger.ms: 10
+
+    consumer:
+      auto-offset-reset: earliest
+      enable-auto-commit: false
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "vn.com.*"
+        spring.json.use.type.headers: false
+        session.timeout.ms: 30000
+        max.poll.records: 500
+
+    events:
+      trip-ready-for-sale: "routex.trip.ready-for-sale"
+      trip-assigned: "routex.trip.assigned"
+      notification-email: "routex.notification.email"
+      notification-sms: "routex.notification.sms"
+
+    topics:
+      trips: "trip.management.event"
+      routes: "route.management.event"
+      booking: "route.bookings.event"
+
+    listener:
+      ack-mode: manual
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+  jackson:
+    mapper:
+      sort-properties-alphabetically: false
+
+management:
+  endpoint:
+    health:
+      probes:
+        enabled: true
+  health:
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
+
+server:
+  port: ${SERVER_PORT:8088}
+
+locking:
+  batch: 100
+
+scheduled:
+  polling:
+    time: 500
+
+identity:
+  jwt:
+    secret: ${JWT_SECRET:CZZRadv0Xe8z3stWFWYdtiJ2E86gUgJvFEfbCYFgJhQ}
+    issuer: ${JWT_ISSUER:user-service}
+    audience: ${JWT_AUDIENCE:management-service}
+    authority-claim-name: ${JWT_CLAIM_NAME:roles}
+    authority-prefix: ${JWT_AUTH_PREFIX:ROLE_}
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.kafka: INFO
+    org.apache.kafka: WARN
+
+grpc:
+  client:
+    merchantService:
+      address: 'static://localhost:9090'
+      enableKeepAlive: true
+      keepAliveWithoutCalls: true
+      negotiationType: plaintext

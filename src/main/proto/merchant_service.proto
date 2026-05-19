@@ -1,0 +1,104 @@
+syntax = "proto3";
+
+package vn.com.routex.hub.grpc;
+
+option java_multiple_files = true;
+option java_package = "vn.com.routex.hub.grpc";
+option java_outer_classname = "MerchantServiceProto";
+
+service MerchantGrpcService {
+  rpc GetRouteNames (RouteNamesRequest) returns (RouteNamesResponse);
+  rpc GetRecentTrips (RecentTripsRequest) returns (RecentTripsResponse);
+  rpc GetTripDetails (TripDetailsRequest) returns (TripDetailsResponse);
+
+  // Internal Booking Context APIs
+  rpc GetTripBookingContext (TripBookingContextRequest) returns (TripBookingContextResponse);
+  rpc GetVehicleSeatBlueprint (VehicleSeatBlueprintRequest) returns (VehicleSeatBlueprintResponse);
+}
+
+message RouteNamesRequest {
+  repeated string route_ids = 1;
+}
+
+message RouteNamesResponse {
+  map<string, string> route_names = 1; // Map of routeId -> "Origin - Destination"
+}
+
+message RecentTripsRequest {
+  string merchant_id = 1;
+  int32 limit = 2;
+}
+
+message RecentTripsResponse {
+  repeated RecentTripInfo trips = 1;
+}
+
+message RecentTripInfo {
+  string trip_id = 1;
+  string route_id = 2;
+  string route_name = 3;
+  string vehicle_plate = 4;
+  string departure_time = 5; // ISO format
+  string status = 6;
+  int32 booked_seats = 7;
+}
+
+message TripDetailsRequest {
+  string trip_id = 1;
+}
+
+message TripDetailsResponse {
+  string trip_id = 1;
+  string merchant_id = 2;
+  string route_id = 3;
+  string departure_time = 4; // ISO format
+  int32 capacity = 5;
+}
+
+message RequestContext {
+  string request_id = 1;
+  string request_date_time = 2;
+  string channel = 3;
+}
+
+message TripBookingContextRequest {
+  string trip_id = 1;
+  RequestContext context = 2;
+}
+
+message TripBookingContextResponse {
+  string trip_id = 1;
+  string route_id = 2;
+  string merchant_id = 3;
+  string vehicle_id = 4;
+  string ticket_price = 5;
+  string pickup_branch = 6;
+  string origin_name = 7;
+  string destination_name = 8;
+  string route_status = 9;
+  string trip_status = 10;
+}
+
+message VehicleSeatBlueprintRequest {
+  string vehicle_id = 1;
+  RequestContext context = 2;
+}
+
+message VehicleSeatBlueprintResponse {
+  string vehicle_id = 1;
+  string merchant_id = 2;
+  string template_id = 3;
+  int64 seat_capacity = 4;
+  bool has_floor = 5;
+  string vehicle_status = 6;
+  repeated SeatBlueprintItem seats = 7;
+}
+
+message SeatBlueprintItem {
+  string id = 1;
+  string seat_code = 2;
+  string floor = 3;
+  int32 row_no = 4;
+  int32 column_no = 5;
+}
+
