@@ -4,8 +4,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.experimental.UtilityClass;
-import vn.com.routex.hub.analytics.processor.infrastructure.persistence.config.RequestAttributes;
 import vn.com.go.routex.identity.security.base.BaseRequest;
+import vn.com.routex.hub.analytics.processor.infrastructure.persistence.config.RequestAttributes;
 
 import java.util.List;
 

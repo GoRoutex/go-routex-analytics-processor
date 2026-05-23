@@ -14,8 +14,8 @@ import vn.com.routex.hub.analytics.processor.infrastructure.grpc.client.Merchant
 import vn.com.routex.hub.analytics.processor.infrastructure.persistence.jpa.finance.entity.MerchantDailyStatsEntity;
 import vn.com.routex.hub.analytics.processor.infrastructure.persistence.jpa.finance.repository.MerchantDailyStatsRepository;
 import vn.com.routex.hub.analytics.processor.infrastructure.persistence.jpa.finance.repository.TripDemandHistoryRepository;
-import vn.com.routex.hub.grpc.RecentTripInfo;
 import vn.com.routex.hub.analytics.processor.interfaces.model.dashboard.response.MerchantDashboardResponse;
+import vn.com.routex.hub.grpc.RecentTripInfo;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

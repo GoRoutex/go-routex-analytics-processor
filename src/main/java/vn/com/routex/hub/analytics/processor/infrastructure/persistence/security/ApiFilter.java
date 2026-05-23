@@ -11,9 +11,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.web.util.ContentCachingResponseWrapper;
+import vn.com.go.routex.identity.security.base.BaseRequest;
 import vn.com.routex.hub.analytics.processor.infrastructure.persistence.config.RequestAttributes;
 import vn.com.routex.hub.analytics.processor.infrastructure.persistence.security.envelope.RequestEnvelopeExtractor;
-import vn.com.go.routex.identity.security.base.BaseRequest;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;

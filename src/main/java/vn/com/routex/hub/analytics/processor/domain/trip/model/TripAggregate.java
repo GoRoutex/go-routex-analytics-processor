@@ -18,7 +18,6 @@ import java.time.OffsetDateTime;
 public class TripAggregate extends AbstractAuditingEntity {
     private String id;
     private String routeId;
-    private String pickupBranch;
     private String creator;
     private String merchantId;
     private String tripCode;

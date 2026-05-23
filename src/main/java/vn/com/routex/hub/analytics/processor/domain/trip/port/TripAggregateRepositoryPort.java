@@ -1,7 +1,6 @@
 package vn.com.routex.hub.analytics.processor.domain.trip.port;
 
 
-import vn.com.routex.hub.analytics.processor.domain.trip.TripStatus;
 import vn.com.routex.hub.analytics.processor.domain.trip.model.TripAggregate;
 
 import java.util.Optional;

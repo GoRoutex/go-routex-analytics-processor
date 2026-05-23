@@ -16,7 +16,6 @@ public class TripFetchView {
     private String tripCode;
     private String routeId;
     private String creator;
-    private String pickupBranch;
     private String originCode;
     private String originName;
     private String destinationCode;

@@ -72,11 +72,10 @@ message TripBookingContextResponse {
   string merchant_id = 3;
   string vehicle_id = 4;
   string ticket_price = 5;
-  string pickup_branch = 6;
-  string origin_name = 7;
-  string destination_name = 8;
-  string route_status = 9;
-  string trip_status = 10;
+  string origin_name = 6;
+  string destination_name = 7;
+  string route_status = 8;
+  string trip_status = 9;
 }
 
 message VehicleSeatBlueprintRequest {

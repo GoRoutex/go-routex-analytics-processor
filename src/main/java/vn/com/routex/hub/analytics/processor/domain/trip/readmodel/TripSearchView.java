@@ -22,7 +22,6 @@ public class TripSearchView {
     private String vehicleId;
     private String driverId;
     private String tripCode;
-    private String pickupBranch;
     private String originCode;
     private String originName;
     private String destinationCode;

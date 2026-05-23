@@ -7,10 +7,10 @@ import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import vn.com.go.routex.identity.security.base.BaseResponse;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.io.Serializable;
 
 @Getter
 @Setter
