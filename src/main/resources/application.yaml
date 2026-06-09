@@ -75,7 +75,7 @@ management:
       enabled: true
 
 server:
-  port: ${SERVER_PORT:8088}
+  port: ${SERVER_PORT:8083}
 
 locking:
   batch: 100
