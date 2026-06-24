@@ -29,7 +29,7 @@ public class ApiFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String requestURI = request.getRequestURI();
 
-        if (requestURI.startsWith("/actuator/") || requestURI.startsWith("/swagger-ui") || requestURI.startsWith("/v3/api-docs")) {
+        if ("OPTIONS".equalsIgnoreCase(request.getMethod()) || requestURI.startsWith("/actuator/") || requestURI.startsWith("/swagger-ui") || requestURI.startsWith("/v3/api-docs")) {
             filterChain.doFilter(request, response);
             return;
         }

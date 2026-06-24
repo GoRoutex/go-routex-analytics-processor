@@ -7,6 +7,9 @@ import lombok.experimental.UtilityClass;
 import vn.com.go.routex.identity.security.base.BaseRequest;
 import vn.com.routex.hub.analytics.processor.infrastructure.persistence.config.RequestAttributes;
 
+import java.time.OffsetDateTime;
+import java.util.UUID;
+
 @UtilityClass
 public class RequestEnvelopeExtractor {
 
@@ -44,7 +47,11 @@ public class RequestEnvelopeExtractor {
         );
 
         if (requestId == null || requestDateTime == null || channel == null) {
-            throw new IllegalArgumentException("Missing request envelope headers");
+            return BaseRequest.builder()
+                    .requestId(UUID.randomUUID().toString())
+                    .requestDateTime(OffsetDateTime.now().toString())
+                    .channel("ONL")
+                    .build();
         }
 
         return BaseRequest.builder()
