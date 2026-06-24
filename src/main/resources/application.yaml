@@ -8,7 +8,7 @@ spring:
 
   data:
     redis:
-      host: ${REDIS_HOST:localhost}
+      host: ${REDIS_HOST:redis}
       port: ${REDIS_PORT:6379}
       password: ${REDIS_PASSWORD:}
   cache:
@@ -101,7 +101,7 @@ logging:
 grpc:
   client:
     merchantService:
-      address: 'static://localhost:9090'
+      address: ${MERCHANT_SERVICE_GRPC_ADDRESS:static://go-routex-platform-core:9090}
       enableKeepAlive: true
       keepAliveWithoutCalls: true
       negotiationType: plaintext
