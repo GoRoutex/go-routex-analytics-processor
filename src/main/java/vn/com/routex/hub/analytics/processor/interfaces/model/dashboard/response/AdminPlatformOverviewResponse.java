@@ -32,6 +32,7 @@ public class AdminPlatformOverviewResponse extends BaseResponse<AdminPlatformOve
         private List<PartnerStatusDistribution> partnerStatusDistribution;
         private LocalDate from;
         private LocalDate to;
+        private String filter;
         private String granularity;
     }
 

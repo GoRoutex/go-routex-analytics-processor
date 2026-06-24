@@ -6,11 +6,12 @@ import vn.com.routex.hub.analytics.processor.application.RequestContext;
 import java.time.LocalDate;
 
 @Builder
-public record FetchAdminPlatformOverviewQuery(
+public record FetchAdminRevenueReconciliationQuery(
         LocalDate from,
         LocalDate to,
         String filter,
         String granularity,
+        Integer topMerchants,
         RequestContext context
 ) {
 }
