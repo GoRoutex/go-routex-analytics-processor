@@ -7,8 +7,6 @@ import lombok.experimental.UtilityClass;
 import vn.com.go.routex.identity.security.base.BaseRequest;
 import vn.com.routex.hub.analytics.processor.infrastructure.persistence.config.RequestAttributes;
 
-import java.util.List;
-
 @UtilityClass
 public class RequestEnvelopeExtractor {
 
