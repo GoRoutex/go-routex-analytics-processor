@@ -21,6 +21,7 @@ import java.util.List;
 import static org.springframework.http.HttpMethod.DELETE;
 import static org.springframework.http.HttpMethod.GET;
 import static org.springframework.http.HttpMethod.OPTIONS;
+import static org.springframework.http.HttpMethod.PATCH;
 import static org.springframework.http.HttpMethod.POST;
 import static org.springframework.http.HttpMethod.PUT;
 
@@ -71,8 +72,12 @@ public class SecurityConfig {
     private CorsConfigurationSource corsConfigurationSource() {
         return request -> {
             var corsConfig = new CorsConfiguration();
-            corsConfig.applyPermitDefaultValues();
-            corsConfig.setAllowedMethods(List.of(GET.name(), POST.name(), PUT.name(), DELETE.name(), OPTIONS.name()));
+            corsConfig.setAllowedOriginPatterns(List.of("http://localhost:*", "http://127.0.0.1:*", "https://routex-go.com", "https://www.routex-go.com"));
+            corsConfig.setAllowedMethods(List.of(GET.name(), POST.name(), PUT.name(), PATCH.name(), DELETE.name(), OPTIONS.name()));
+            corsConfig.setAllowedHeaders(List.of("*"));
+            corsConfig.setExposedHeaders(List.of("Authorization", "Content-Disposition", "Location", "X-Request-Id", "RT-REQUEST-ID"));
+            corsConfig.setAllowCredentials(true);
+            corsConfig.setMaxAge(3600L);
             return corsConfig;
         };
     }

@@ -8,6 +8,12 @@ spring:
     consumer:
       group-id: ${KAFKA_CONSUMER_GROUP_ID:merchant-platform-local}
 
+  data:
+    redis:
+      host: ${APP_REDIS_HOST:${REDIS_HOST:localhost}}
+      port: ${APP_REDIS_PORT:${REDIS_PORT:6379}}
+      password: ${APP_REDIS_PASSWORD:${REDIS_PASSWORD:}}
+
   datasource:
     url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/routexhub}
     username: ${SPRING_DATASOURCE_USERNAME:routex}

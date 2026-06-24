@@ -16,14 +16,23 @@ public class RedissonConfig {
     @Value("${spring.data.redis.host}")
     private String redisHost;
 
+    @Value("${spring.data.redis.port:6379}")
+    private int redisPort;
+
+    @Value("${spring.data.redis.password:}")
+    private String redisPassword;
+
     @Bean
     public RedissonClient redissonClient() {
         Config config = new Config();
 
-        String redisAddress = String.format("redis://%s:6379", redisHost);
-        config.useSingleServer()
+        String redisAddress = String.format("redis://%s:%d", redisHost, redisPort);
+        var singleServerConfig = config.useSingleServer()
                 .setAddress(redisAddress)
                 .setDatabase(0);
+        if (redisPassword != null && !redisPassword.isBlank()) {
+            singleServerConfig.setPassword(redisPassword);
+        }
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(new JavaTimeModule());
 
