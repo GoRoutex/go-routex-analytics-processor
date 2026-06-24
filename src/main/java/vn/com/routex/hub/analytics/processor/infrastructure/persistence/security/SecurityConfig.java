@@ -75,7 +75,7 @@ public class SecurityConfig {
             corsConfig.setAllowedOriginPatterns(List.of("http://localhost:*", "http://127.0.0.1:*", "https://routex-go.com", "https://www.routex-go.com"));
             corsConfig.setAllowedMethods(List.of(GET.name(), POST.name(), PUT.name(), PATCH.name(), DELETE.name(), OPTIONS.name()));
             corsConfig.setAllowedHeaders(List.of("*"));
-            corsConfig.setExposedHeaders(List.of("Authorization", "Content-Disposition", "Location", "X-Request-Id", "RT-REQUEST-ID"));
+            corsConfig.setExposedHeaders(List.of("Authorization", "Content-Disposition", "Location", "X-Request-Id", "RT-REQUEST-ID", "RT-REQUEST-DATE-TIME", "RT-CHANNEL"));
             corsConfig.setAllowCredentials(true);
             corsConfig.setMaxAge(3600L);
             return corsConfig;
